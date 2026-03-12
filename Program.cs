@@ -30,7 +30,20 @@ class Inventory
                   Console.WriteLine("Producto cargado con exito.");
                   Console.WriteLine("\nPresione cualquier tecla para continuar...");
                   Console.ReadKey(true);
+                  Console.Clear();
                   opcion = 0;
+                }
+             if (opcion == 2)
+                {
+                    string producto;
+                    Console.Clear();
+                    Console.WriteLine("¿Que producto desea eliminar?");
+                    producto = Console.ReadLine();
+                    Eliminar(inventory, producto);
+                    Console.WriteLine("El producto " + producto + " fue eliminado correctamente.");
+                    Console.WriteLine("\nPresione cualquier tecla para continuar...");
+                    Console.ReadKey(true);
+                    opcion = 0;
                 }
              if (opcion == 3)
                 {
@@ -82,8 +95,18 @@ class Inventory
         foreach (string producto in inventory) {
             Console.Write(" " + producto);
         
-        }
+        }      
+    }
 
-        
+    public static void Eliminar(List<string> inventory,string nombre)
+    {
+        for(int i = 0; i > inventory.Count(); i++)
+        {
+            if (inventory[i] == nombre)
+            {
+                inventory.Remove(nombre);
+                i = inventory.Count() + 10;
+            }
+        }
     }
 }
